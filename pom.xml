@@ -16,6 +16,10 @@
         <module>app-task</module>
     </modules>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.targetJdk>1.8</project.build.targetJdk>
+        <project.report.outputEncoding>UTF-8</project.report.outputEncoding>
+        <project.report.inputEncoding>UTF-8</project.report.inputEncoding>
         <project.spring.context>4.1.6.RELEASE</project.spring.context>
         <project.spring.web>4.1.6.RELEASE</project.spring.web>
         <project.spring.webmvc>4.1.6.RELEASE</project.spring.webmvc>

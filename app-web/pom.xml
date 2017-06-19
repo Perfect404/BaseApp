@@ -10,6 +10,12 @@
     <packaging>war</packaging>
     <name>app-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.targetJdk>1.8</project.build.targetJdk>
+        <project.report.outputEncoding>UTF-8</project.report.outputEncoding>
+        <project.report.inputEncoding>UTF-8</project.report.inputEncoding>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
