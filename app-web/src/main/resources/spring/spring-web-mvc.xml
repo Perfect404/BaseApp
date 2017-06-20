@@ -12,68 +12,68 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
     <context:component-scan base-package="com.app.web" />
-    <mvc:annotation-driven >
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <property name="supportedMediaTypes">
-                    <list>
-                        <value>text/plain;charset=UTF-8</value>
-                        <value>text/html;charset=UTF-8</value>
-                    </list>
-                </property>
-            </bean>
-            <bean
-                    class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="supportedMediaTypes">
-                    <list>
-                        <value>application/json; charset=UTF-8</value>
-                        <value>application/x-www-form-urlencoded; charset=UTF-8</value>
-                    </list>
-                </property>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
-    <bean id="freemarkerConfig"
-          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath" value="/WEB-INF/view/" />
-        <property name="freemarkerSettings">
-            <props>
-                <prop key="template_update_delay">0</prop>
-                <prop key="default_encoding">UTF-8</prop>
-                <prop key="locale">zh_CN</prop>
-                <prop key="number_format">0.##########</prop>
-                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
-                <prop key="classic_compatible">true</prop>
-                <prop key="template_exception_handler">ignore</prop>
-            </props>
-        </property>
-    </bean>
-    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="prefix" value="/"/>
-        <property name="suffix" value=".ftl"/>
-        <property name="contentType" value="text/html; charset=UTF-8" />
-    </bean>
-  <!--  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>-->
-    <mvc:view-controller path="/" view-name="/index" />
-    <mvc:resources mapping="/images/**" location="/images/"/>
-    <mvc:resources mapping="/css/**" location="/css/"/>
-    <mvc:resources mapping="/js/**" location="/js/"/>
+    <!--<mvc:annotation-driven >-->
+        <!--<mvc:message-converters>-->
+            <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+                <!--<property name="supportedMediaTypes">-->
+                    <!--<list>-->
+                        <!--<value>text/plain;charset=UTF-8</value>-->
+                        <!--<value>text/html;charset=UTF-8</value>-->
+                    <!--</list>-->
+                <!--</property>-->
+            <!--</bean>-->
+            <!--<bean-->
+                    <!--class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+                <!--<property name="supportedMediaTypes">-->
+                    <!--<list>-->
+                        <!--<value>application/json; charset=UTF-8</value>-->
+                        <!--<value>application/x-www-form-urlencoded; charset=UTF-8</value>-->
+                    <!--</list>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</mvc:message-converters>-->
+    <!--</mvc:annotation-driven>-->
+    <!--<bean id="freemarkerConfig"-->
+          <!--class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">-->
+        <!--<property name="templateLoaderPath" value="/WEB-INF/view/" />-->
+        <!--<property name="freemarkerSettings">-->
+            <!--<props>-->
+                <!--<prop key="template_update_delay">0</prop>-->
+                <!--<prop key="default_encoding">UTF-8</prop>-->
+                <!--<prop key="locale">zh_CN</prop>-->
+                <!--<prop key="number_format">0.##########</prop>-->
+                <!--<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>-->
+                <!--<prop key="classic_compatible">true</prop>-->
+                <!--<prop key="template_exception_handler">ignore</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">-->
+        <!--<property name="prefix" value="/"/>-->
+        <!--<property name="suffix" value=".ftl"/>-->
+        <!--<property name="contentType" value="text/html; charset=UTF-8" />-->
+    <!--</bean>-->
+  <!--&lt;!&ndash;  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+    <!--</bean>&ndash;&gt;-->
+    <!--<mvc:view-controller path="/" view-name="/index" />-->
+    <!--<mvc:resources mapping="/images/**" location="/images/"/>-->
+    <!--<mvc:resources mapping="/css/**" location="/css/"/>-->
+    <!--<mvc:resources mapping="/js/**" location="/js/"/>-->
 
-    <!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->
-    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 -->
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <!-- 遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/error_fileupload.jsp页面 -->
-                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">WEB-INF/error_fileupload</prop>
-                <!-- 处理其它异常(包括Controller抛出的) -->
-                <prop key="java.lang.Throwable">WEB-INF/500</prop>
-            </props>
-        </property>
-    </bean>
-    <tx:annotation-driven />
+    <!--&lt;!&ndash; SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException &ndash;&gt;-->
+    <!--&lt;!&ndash; 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 &ndash;&gt;-->
+    <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+        <!--<property name="exceptionMappings">-->
+            <!--<props>-->
+                <!--&lt;!&ndash; 遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/error_fileupload.jsp页面 &ndash;&gt;-->
+                <!--<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">WEB-INF/error_fileupload</prop>-->
+                <!--&lt;!&ndash; 处理其它异常(包括Controller抛出的) &ndash;&gt;-->
+                <!--<prop key="java.lang.Throwable">WEB-INF/500</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<tx:annotation-driven />-->
     <!--<import resource="classpath*:applicationContext.xml" />-->
 </beans>
